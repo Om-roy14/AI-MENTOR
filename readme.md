@@ -77,29 +77,38 @@ Success Page
 ## 📂 Project Structure
 
 ```
-AI-MENTOR/
-│
-├── app.py
-├── .env
-├── requirements.txt
-│
-├── routes/
-│   └── mentor.py
-│
-├── services/
-│   ├── ai_service.py
-│   ├── email_service.py
-│   └── prompt_service.py
-│
-├── templates/
-│   ├── index.html
-│   ├── roadmap_email.html
-│   └── success.html
-│
-└── static/
-    ├── css/
-    │   └── style.css
-    └── images/
+│   AI-MENTOR WORKFLOW.png
+│   app.py
+│   config.py
+│   create_tables.py
+│   readme.md
+│   requirements.txt
+│   
+├───database
+│   │   database.py
+│           
+├───models
+│   │   email_log.py
+│           
+├───routes
+│   │   mentor.py
+│           
+├───services
+│   │   ai_service.py
+│   │   email_service.py
+│   │   log_service.py
+│   │   prompt_service.py
+│           
+├───static
+│   ├───css
+│   │       css2.css
+│   │       style.css
+│   │       
+│   └───images
+├───templates
+│       index.html
+│       success.html
+
 ```
 
 ---
