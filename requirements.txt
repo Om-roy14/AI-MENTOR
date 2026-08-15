@@ -7,3 +7,4 @@ groq
 sqlalchemy
 pymysql
 email-validator
+openai==2.46.0
