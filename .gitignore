@@ -20,4 +20,7 @@ Thumbs.db
 .env
 __pycache__/
 *.py[cod]
-.vscode/
+.vscode/__pycache__/
+*.pyc
+*.pyo
+*.pyd
