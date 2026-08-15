@@ -14,8 +14,8 @@ from config import (
 
 Base = declarative_base()
 
-SessionLocal = None
 engine = None
+SessionLocal = None
 
 
 if USE_DATABASE:

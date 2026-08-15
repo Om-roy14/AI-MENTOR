@@ -1,6 +1,5 @@
 from database.database import SessionLocal
 from models.email_log import EmailLog
-from config import USE_DATABASE
 
 
 def save_log(
@@ -11,9 +10,7 @@ def save_log(
     error=None
 ):
 
-    # Database disabled
-    if not USE_DATABASE:
-        print("Database disabled. Log skipped.")
+    if SessionLocal is None:
         return
 
     db = SessionLocal()
@@ -31,11 +28,10 @@ def save_log(
         db.add(log)
         db.commit()
 
-    except Exception as e:
+    except Exception:
 
         db.rollback()
-
-        print("Database logging failed:", e)
+        raise
 
     finally:
 
