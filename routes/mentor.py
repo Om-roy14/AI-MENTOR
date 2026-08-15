@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+
 from services.log_service import save_log
 from services.prompt_service import build_prompt
 from services.ai_service import generate_roadmap
 from services.email_service import send_email
+
 
 router = APIRouter()
 
@@ -43,6 +45,10 @@ async def generate(
 
 ):
 
+    # =========================
+    # BUILD PROMPT
+    # =========================
+
     prompt = build_prompt(
 
         name,
@@ -55,7 +61,17 @@ async def generate(
 
     )
 
+
+    # =========================
+    # GENERATE ROADMAP
+    # =========================
+
     roadmap = generate_roadmap(prompt)
+
+
+    # =========================
+    # SEND EMAIL
+    # =========================
 
     try:
 
@@ -65,6 +81,8 @@ async def generate(
             roadmap=roadmap
         )
 
+        # Save log locally if database is enabled.
+        # Automatically skipped on Vercel.
         save_log(
             name=name,
             email=email,
@@ -83,6 +101,11 @@ async def generate(
         )
 
         raise e
+
+
+    # =========================
+    # SUCCESS PAGE
+    # =========================
 
     return templates.TemplateResponse(
 
