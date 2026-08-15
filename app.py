@@ -1,16 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from pathlib import Path
 
 from routes.mentor import router
 
 app = FastAPI(title="AI Mentor")
 
-BASE_DIR = Path(__file__).resolve().parent
-
 app.mount(
     "/static",
-    StaticFiles(directory=BASE_DIR / "static"),
+    StaticFiles(directory="static"),
     name="static"
 )
 
